@@ -1,0 +1,79 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.svg-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* SVG高さ / SVG幅 * 100 */
+}
+svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+::ng-deep .link {
+    stroke: #000;
+    stroke-width: 1.5px;
+  }
+  
+::ng-deep .node {
+    cursor: move;
+    fill: #ccc;
+    stroke: #000;
+    stroke-width: 1.5px;
+}
+  
+::ng-deep .fixed {
+    fill: #f00;
+}
+
+h1 {
+    color: #364e96;/*文字色*/
+    padding: 0.5em 0;/*上下の余白*/
+    border-top: solid 3px #364e96;/*上線*/
+    border-bottom: solid 3px #364e96;/*下線*/
+    font-size: 18px;
+}
+
+.title-wrapper {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 300;
+}
+
+.fileupd-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+
+    .file-select-button {
+        position: absolute;
+        left: -86.115px;
+        top: -18px;
+        -webkit-transition-property: all;
+        -moz-transition-property: all;
+        transition-property: all;
+        -webkit-transition-duration:0.3s;
+        -moz-transition-duration:0.3s;
+        transition-duration:0.3s;
+        -webkit-transition-timing-function:ease-in-out;
+        -moz-transition-timing-function:ease-in-out;
+        transition-timing-function:ease-in-out;
+
+        &:hover {
+            background-color: rgb(63, 181, 175);
+        }
+    }
+}

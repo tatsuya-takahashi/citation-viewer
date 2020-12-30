@@ -1,0 +1,24 @@
+<div class="wrapper">
+
+    <div class="title-wrapper">
+        <h1>Citation Viewer 1.0</h1>
+    </div>
+
+    <div class="svg-wrapper">
+        <!-- <svg [attr.width]="svg_width" [attr.height]="svg_height" [attr.viewBox]="svg_viewBox"> -->
+            <svg [attr.width]="svg_width" [attr.height]="svg_height"> 
+        </svg>
+    </div>
+    <div class="fileupd-wrapper">
+        <input type="file" style="display: none" #fileInput accept="image/*" (change)="onChangeFileInput()" />
+        <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
+         <mat-icon>attach_file</mat-icon>
+          Choose JSON File
+        </button>
+        
+        <!-- <p class="file-name" *ngIf="!file; else fileName">ファイルが選択されていません</p>
+        <ng-template #fileName>
+          <p class="file-name">{{ file?.name }}</p>
+        </ng-template> -->
+    </div>
+</div>
