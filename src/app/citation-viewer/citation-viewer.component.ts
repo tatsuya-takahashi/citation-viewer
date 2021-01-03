@@ -1,3 +1,7 @@
+/**
+ * Citation Viewer
+ */
+
 import { Component, OnInit, HostListener } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
