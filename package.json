@@ -3,11 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "buildProd": "./node_modules/.bin/ng build --prod --base-href 'https://tatsuya-takahashi.github.io/citation-viewer/'",
+    "publish": "./node_modules/.bin/angular-cli-ghpages"
   },
   "private": true,
   "dependencies": {

@@ -1,5 +1,11 @@
 <div class="wrapper">
 
+    <div class="spinner-wrapper">
+        <div class="opening-wrapper">
+            <h2>Citation Viewer</h2>
+        </div>
+    </div>
+
     <div class="title-wrapper">
         <h1>Citation Viewer 1.0</h1>
     </div>
@@ -10,7 +16,7 @@
         </svg>
     </div>
     <div class="fileupd-wrapper">
-        <input type="file" style="display: none" #fileInput accept="image/*" (change)="onChangeFileInput()" />
+        <input type="file" style="display: none" #fileInput accept="application/json, text/plain" (change)="onChangeFileInput()" />
         <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
          <mat-icon>attach_file</mat-icon>
           Choose JSON File

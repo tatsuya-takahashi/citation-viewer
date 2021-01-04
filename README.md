@@ -29,7 +29,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Build
 ```
-/node_modules/.bin/ng build --prod --base-href "https://tatsuya-takahashi.github.io/citation-viewer"
+# production build
+./node_modules/.bin/ng build --prod --base-href "https://tatsuya-takahashi.github.io/citation-viewer/"
 ```
 
 ## push pages

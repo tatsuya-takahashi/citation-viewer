@@ -2,7 +2,7 @@
  * Citation Viewer
  */
 
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
 import * as d3 from 'd3';
@@ -20,6 +20,10 @@ export class CitationViewerComponent implements OnInit {
   public svg_width: number = 100;
   public svg_height: number = 100;
   public svg_viewBox: string = "0 0 500 500";
+
+  @ViewChild('fileInput')
+  public fileInput: any;
+  public file: File | null = null;
 
   private graph = ({
     nodes: Array.from({length:13}, () => ({})),
@@ -73,9 +77,33 @@ export class CitationViewerComponent implements OnInit {
   }
 
   public onChangeFileInput() {
+    const files: { [key: string]: File } = this.fileInput.nativeElement.files;
+    this.file = files[0];
+    const reader = new FileReader();
+    try {
+      reader.readAsText(this.file);
+      reader.onload = (ev) => {
+
+        try {
+          //テキストエリアに表示する
+          const plaintext: any = reader.result;
+          const jsontext: any = JSON.parse(plaintext);
+          console.log(jsontext);
+        } catch(e: any) {
+          console.log(e);
+          alert('Invalid File Format. \nPlease report below error on GitHub. \n' + e) 
+        }
+
+      }
+    } catch(e: any) {
+      console.log(e);
+      alert('Invalid File Format.' + e)
+    }
+    
   }
 
   public onClickFileInputButton() {
+    this.fileInput.nativeElement.click();
   }
 
   private initGraph() {

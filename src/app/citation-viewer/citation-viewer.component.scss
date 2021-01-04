@@ -1,6 +1,14 @@
 .wrapper {
     width: 100%;
     height: 100%;
+    overflow-y: hidden;
+}
+
+.title-wrapper {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
 }
 
 .container {
@@ -11,8 +19,19 @@
 .svg-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 100%; /* SVG高さ / SVG幅 * 100 */
+    height: 100%;
+    padding-top: 100%;
+    z-index: 1;
 }
+
+.spinner-wrapper {
+    position: absolute;
+    z-index: 3;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    width: 100%;
+    height: 100%;
+}
+
 svg {
     position: fixed;
     top: 0;
@@ -42,26 +61,39 @@ h1 {
     padding: 0.5em 0;/*上下の余白*/
     border-top: solid 3px #364e96;/*上線*/
     border-bottom: solid 3px #364e96;/*下線*/
-    font-size: 18px;
+    font-size: 16px;
 }
 
-.title-wrapper {
+.opening-wrapper {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 300;
+    top: 50%;
+    left: 50%;
+
+    h2 {
+        position: absolute;
+        color: white;
+        font-size: 64px;
+        width: 600px;
+        left: -300px;
+        top: -90px;
+        text-align: center;
+        font-family: 'Josefin Slab', serif;
+        // font-family: 'Nunito', sans-serif;
+    }
 }
+
 
 .fileupd-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100px;
+    z-index: 4;
 
     .file-select-button {
         position: absolute;
         left: -86.115px;
-        top: -18px;
+        top: 60px;
         -webkit-transition-property: all;
         -moz-transition-property: all;
         transition-property: all;
