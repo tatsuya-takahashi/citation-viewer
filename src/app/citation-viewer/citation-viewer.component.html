@@ -1,9 +1,10 @@
-<div class="wrapper">
+<div class="wrapper">    
 
     <div class="spinner-wrapper">
         <div class="opening-wrapper">
             <h2>Citation Viewer</h2>
         </div>
+        <mat-progress-bar class="progress" mode="determinate" [value]="progress"></mat-progress-bar>
     </div>
 
     <div class="title-wrapper">
@@ -12,12 +13,12 @@
 
     <div class="svg-wrapper">
         <!-- <svg [attr.width]="svg_width" [attr.height]="svg_height" [attr.viewBox]="svg_viewBox"> -->
-            <svg [attr.width]="svg_width" [attr.height]="svg_height"> 
+            <svg id="graph_canvas" [attr.width]="svg_width" [attr.height]="svg_height"> 
         </svg>
     </div>
     <div class="fileupd-wrapper">
         <input type="file" style="display: none" #fileInput accept="application/json, text/plain" (change)="onChangeFileInput()" />
-        <button mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
+        <button [disabled]="isFileReading" mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
          <mat-icon>attach_file</mat-icon>
           Choose JSON File
         </button>

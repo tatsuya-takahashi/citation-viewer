@@ -21,9 +21,18 @@ export class CitationViewerComponent implements OnInit {
   public svg_height: number = 100;
   public svg_viewBox: string = "0 0 500 500";
 
+  public isFileReading: boolean = false;
+  public isFileReaded: boolean = false;
+
   @ViewChild('fileInput')
   public fileInput: any;
   public file: File | null = null;
+
+  public progress: number = 0;
+
+  private allPapers: any = [];
+  private maxNum: number = 0;
+  private currentNum: number = 0;
 
   private graph = ({
     nodes: Array.from({length:13}, () => ({})),
@@ -56,39 +65,52 @@ export class CitationViewerComponent implements OnInit {
   constructor() { }
 
   async ngOnInit(): Promise<void> {
+
+    console.log(this.graph.nodes);
     
     this.initGraph();
 
-    // doi
+    // doi search debug
     // doi:10.1002/0470841559.ch1 ]
-    CrossRef.work('https://doi.org/10.1002/0470841559.ch1', (err: any, item: any) => {
-      console.log(item);
-    });
+      // CrossRef.work('https://doi.org/10.1002/0470841559.ch1', (err: any, item: any) => {
+      //   console.log(item);
+      // });
     
+    // retrieval doi debug
+    // CrossRef.works(
+    // {
+    //   'rows': '1',
+    //   'query.bibliographic': 'Comparison',
+    //   'query.author': 'Andries+et+al'
+    // }
+    // , (err: any, item: any) => {
+    //   console.log(item);
+    // });
     
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    console.log(event.target.innerHeight);
-    console.log(event.target.innerWidth);
+    // console.log(event.target.innerHeight);
+    // console.log(event.target.innerWidth);
     this.svg_width = event.target.innerWidth;
     this.svg_height = event.target.innerHeight;
   }
 
-  public onChangeFileInput() {
+  public async onChangeFileInput() {
     const files: { [key: string]: File } = this.fileInput.nativeElement.files;
     this.file = files[0];
     const reader = new FileReader();
     try {
       reader.readAsText(this.file);
-      reader.onload = (ev) => {
+      reader.onload = async (ev) => {
 
         try {
           //テキストエリアに表示する
           const plaintext: any = reader.result;
           const jsontext: any = JSON.parse(plaintext);
-          console.log(jsontext);
+
+          await this.readMetadata(jsontext);
         } catch(e: any) {
           console.log(e);
           alert('Invalid File Format. \nPlease report below error on GitHub. \n' + e) 
@@ -106,13 +128,109 @@ export class CitationViewerComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
+  /**
+   * readMetadata
+   * @param jsontext json file exported from paperpile
+   */
+  private async readMetadata(jsontext: any): Promise<any> {
+
+    // change flg
+    this.isFileReading = true;
+
+    // init progress
+    this.maxNum = jsontext.length;
+    this.currentNum = 0;
+    const parallelFunctions: any = [];
+
+    try {
+      for (const row of jsontext) {
+        // doi check
+        let item: any = [];
+        if (!row.doi) {
+          // get item from title
+          parallelFunctions.push(this.retrieveDOIByTitle(row.title))
+          // item = await this.retrieveDOIByTitle(row.title);
+        } else {
+          parallelFunctions.push(this.getItemByDOI(row.doi))
+          // item = await this.getItemByDOI(row.doi);
+        }
+        // console.log(item);
+
+        // count up
+        // currentNum++;
+        // this.progress = currentNum / maxNum * 100;
+
+        // if not exist, continue loop
+        // if (!item || item.length < 1) {
+        //   continue;
+        // }
+
+        // console.log(item);
+        // this.allPapers.push(item);
+
+      }
+
+      const items = await Promise.all(parallelFunctions);
+      console.log(items);
+
+
+    } catch(e: any) {
+      // throw
+      Promise.reject(e);
+    }
+  }
+
+
+  private async getItemByDOI(doi: any): Promise<any> {
+    return new Promise((resolve: any, reject: any) => {
+            // CrossRef.work('https://doi.org/10.1002/0470841559.ch1', (err: any, item: any) => {
+      //   console.log(item);
+      // });
+      // console.log(doi);
+      CrossRef.work('https://doi.org/' + doi, (err: any, item: any) => {
+        this.currentNum++;
+        this.progress = this.currentNum / this.maxNum * 100;
+        if (err) {
+          // reject(err);
+          resolve([]);
+        }
+        resolve(item);
+      });
+    })
+  }
+
+  /**
+   * retrieve DOI By Title
+   * @param title paper title
+   */
+  private async retrieveDOIByTitle(title: string): Promise<any> {
+
+    return new Promise((resolve: any, reject: any) => {
+      CrossRef.works(
+        {
+          'rows': '1',
+          'query.bibliographic': title,
+          // 'query.author': row.author ? row.author : '',
+        }
+        , (err: any, item: any) => {
+        this.currentNum++;
+        this.progress = this.currentNum / this.maxNum * 100;
+          if (err) {
+            // reject(err);
+            resolve([]);
+          }
+          resolve(item[0]);
+        });
+    })
+  }
+
   private initGraph() {
 
     for (let i = 0; i < this.graph.nodes.length; i++) {
       this.graph.nodes[i] = {index: i, abc: "abc"};
     }
 
-    const svg: any = d3.select("svg");
+    const svg: any = d3.select("#graph_canvas");
     const g = svg.append("g");
     const link = g
         .selectAll(".link")

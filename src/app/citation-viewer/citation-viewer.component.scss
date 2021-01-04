@@ -30,6 +30,31 @@
     background-color: rgba($color: #000000, $alpha: 0.7);
     width: 100%;
     height: 100%;
+
+    .progress {
+        position: absolute;
+        top: 50%;
+        margin-top: 37px;
+        background-color: transparent;
+    }
+
+    .opening-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    
+        h2 {
+            position: absolute;
+            color: white;
+            font-size: 64px;
+            width: 600px;
+            left: -300px;
+            top: -90px;
+            text-align: center;
+            font-family: 'Josefin Slab', serif;
+            // font-family: 'Nunito', sans-serif;
+        }
+    }
 }
 
 svg {
@@ -64,25 +89,6 @@ h1 {
     font-size: 16px;
 }
 
-.opening-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    h2 {
-        position: absolute;
-        color: white;
-        font-size: 64px;
-        width: 600px;
-        left: -300px;
-        top: -90px;
-        text-align: center;
-        font-family: 'Josefin Slab', serif;
-        // font-family: 'Nunito', sans-serif;
-    }
-}
-
-
 .fileupd-wrapper {
     position: absolute;
     top: 50%;
@@ -104,8 +110,8 @@ h1 {
         -moz-transition-timing-function:ease-in-out;
         transition-timing-function:ease-in-out;
 
-        &:hover {
-            background-color: rgb(63, 181, 175);
-        }
+        // &:hover {
+        //     background-color: rgb(63, 181, 175);
+        // }
     }
 }
