@@ -1,13 +1,13 @@
 <div class="wrapper">    
 
-    <div class="spinner-wrapper">
+    <div class="spinner-wrapper" *ngIf="!isFileReaded">
         <div class="opening-wrapper">
             <h2>Citation Viewer</h2>
         </div>
         <mat-progress-bar class="progress" mode="determinate" [value]="progress"></mat-progress-bar>
     </div>
 
-    <div class="title-wrapper">
+    <div class="title-wrapper" *ngIf="isFileReaded">
         <h1>Citation Viewer 1.0</h1>
     </div>
 
@@ -16,16 +16,25 @@
             <svg id="graph_canvas" [attr.width]="svg_width" [attr.height]="svg_height"> 
         </svg>
     </div>
-    <div class="fileupd-wrapper">
+    <div class="fileupd-wrapper" *ngIf="!isFileReaded">
         <input type="file" style="display: none" #fileInput accept="application/json, text/plain" (change)="onChangeFileInput()" />
         <button [disabled]="isFileReading" mat-raised-button color="primary" class="file-select-button" (click)="onClickFileInputButton()">
          <mat-icon>attach_file</mat-icon>
           Choose JSON File
         </button>
-        
-        <!-- <p class="file-name" *ngIf="!file; else fileName">ファイルが選択されていません</p>
-        <ng-template #fileName>
-          <p class="file-name">{{ file?.name }}</p>
-        </ng-template> -->
+    </div>
+
+    <div *ngIf="isFileReaded" class="legend search">Fetch Sccuess</div>
+    <div *ngIf="isFileReaded" class="legend doi">DOI not in paperpile</div>
+    <div *ngIf="isFileReaded" class="legend none">Cnannot find DOI</div>
+
+    <div class="github">
+        <a target="_blank" href="https://github.com/tatsuya-takahashi/citation-viewer"><img src="../../assets/GitHub-Mark-32px.png" /></a>
+    </div>
+
+    <div class="share">
+        <a target="_blank" href="http://twitter.com/share?url=https://tatsuya-takahashi.github.io/citation-viewer/&text=Citation Viewer paperpile visualization&via=iwashi_ser&hashtags=citationviewer" mat-icon-button aria-label="Share on twitter">
+            <mat-icon>share</mat-icon>
+        </a>
     </div>
 </div>

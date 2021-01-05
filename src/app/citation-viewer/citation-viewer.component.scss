@@ -2,6 +2,21 @@
     width: 100%;
     height: 100%;
     overflow-y: hidden;
+    background-color: rgba(245, 245, 245, 0.904);
+}
+
+.github {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+.share {
+    position: absolute;
+    top: 6px;
+    right: 60px;
+    z-index: 10;
 }
 
 .title-wrapper {
@@ -66,26 +81,100 @@ svg {
 }
 
 ::ng-deep .link {
-    stroke: #000;
+    stroke: #999;
     stroke-width: 1.5px;
+    stroke-opacity: 0.8;
   }
   
 ::ng-deep .node {
     cursor: move;
     fill: #ccc;
-    stroke: #000;
-    stroke-width: 1.5px;
+    fill-opacity: 0.8;
 }
-  
+
+::ng-deep .node_search {
+    cursor: move;
+    fill: #4DB2A1;
+    fill-opacity: 0.8;
+}
+
+::ng-deep .node_doi {
+    cursor: move;
+    fill: #3F7FB9;
+    fill-opacity: 0.8;
+}
+
+::ng-deep .node_none {
+    cursor: move;
+    fill: #1B366D;
+    fill-opacity: 0.8;
+}
+
+.search {
+    top: 100px;
+    background-color: #4DB2A1;
+    z-index: 10;
+}
+.doi {
+    top: 130px;
+    background-color: #3F7FB9;
+    z-index: 10;
+}
+.none {
+    top: 160px;
+    background-color: #1B366D;
+    z-index: 10;
+}
+.legend {
+    position: absolute;
+    left: 10px;
+    width: 130px;
+    height: 25px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+}
+
+::ng-deep text.text_inn {
+    font-family: Roboto,sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing    : 3px;
+    stroke: white;
+    stroke-width: 1.3px;
+    stroke-opacity: 0.8;
+    stroke-linejoin: round;
+}
+
+::ng-deep text.text_out {
+    font-family: Roboto,sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing    : 3px;
+    fill: #333;
+    stroke-opacity: 0.7;
+    stroke: none;
+
+}
+
 ::ng-deep .fixed {
-    fill: #f00;
+    fill-opacity: 1.0;
+    stroke: #1B366D;
+    stroke-width: 5px;
+    // .text_inn {
+
+    // }
+    // .text_out {
+
+    // }
 }
 
 h1 {
-    color: #364e96;/*文字色*/
-    padding: 0.5em 0;/*上下の余白*/
-    border-top: solid 3px #364e96;/*上線*/
-    border-bottom: solid 3px #364e96;/*下線*/
+    color: #1B366D;
+    // padding: 0.5em 0;/*上下の余白*/
+    // border-top: solid 3px #364e96;/*上線*/
+    // border-bottom: solid 3px #364e96;/*下線*/
     font-size: 16px;
 }
 
