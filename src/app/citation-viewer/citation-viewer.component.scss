@@ -2,7 +2,7 @@
     width: 100%;
     height: 100%;
     overflow-y: hidden;
-    background-color: rgba(245, 245, 245, 0.904);
+    background-color: rgb(235, 235, 235);
 }
 
 .github {
@@ -203,4 +203,33 @@ h1 {
         //     background-color: rgb(63, 181, 175);
         // }
     }
+}
+
+.papertitle {
+    position: absolute;
+    top: 100px;
+    font-size: 18px;
+    right: 20px;
+    width: 240px;
+    color: black;
+    z-index: 100;
+    height: 100px;
+    background-color: rgba(150, 150, 150, 0.219);
+    padding: 10px;
+    overflow-y: auto;
+    // background-color: rgba(114, 114, 114, 0.39);
+}
+
+.paperabstract {
+    padding: 10px;
+    position: absolute;
+    top: 220px;
+    font-size: 14px;
+    right: 20px;
+    width: 240px;
+    color: black;
+    z-index: 100;
+    height: 400px;
+    overflow-y: auto;
+    background-color: rgba(150, 150, 150, 0.219);
 }

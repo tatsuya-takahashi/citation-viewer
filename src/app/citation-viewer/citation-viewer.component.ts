@@ -24,6 +24,9 @@ export class CitationViewerComponent implements OnInit {
   public isFileReading: boolean = false;
   public isFileReaded: boolean = false;
 
+  public papertitle: string = "";
+  public abstract: string = "";
+
   @ViewChild('fileInput')
   public fileInput: any;
   public file: File | null = null;
@@ -157,7 +160,8 @@ export class CitationViewerComponent implements OnInit {
           author: item.author,
           IF: item["is-referenced-by-count"] ? item["is-referenced-by-count"] : 0,
           type: item.itemtype,
-          year: item.created["date-parts"][0]
+          year: item.created["date-parts"][0],
+          abstract: item.abstract
         })
         idx++;
       }
@@ -300,7 +304,9 @@ export class CitationViewerComponent implements OnInit {
       .drag()
       .on("start", (event: any, d: any) => {
         d3.select("#id_" + d.index).classed("fixed", true);
-        console.log(d.title);
+        this.papertitle = d.title;
+        this.abstract = d.abstract;
+        console.log(d.abstract);
       })
       .on("drag", (event: any, d: any) => {
         d.fx = event.x;

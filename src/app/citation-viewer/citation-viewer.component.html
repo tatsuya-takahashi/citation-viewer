@@ -29,7 +29,7 @@
     <div *ngIf="isFileReaded" class="legend none">Cnannot find DOI</div>
 
     <div class="github">
-        <a target="_blank" href="https://github.com/tatsuya-takahashi/citation-viewer"><img src="../../assets/GitHub-Mark-32px.png" /></a>
+        <a target="_blank" href="https://github.com/tatsuya-takahashi/citation-viewer"><img src="https://tatsuya-takahashi.github.io/citation-viewer/assets/GitHub-Mark-32px.png" /></a>
     </div>
 
     <div class="share">
@@ -37,4 +37,13 @@
             <mat-icon>share</mat-icon>
         </a>
     </div>
+
+    <div *ngIf="isFileReaded" class="papertitle">
+        <span>{{papertitle}}</span>
+    </div>
+
+    <div *ngIf="isFileReaded" class="paperabstract">
+        <span>{{abstract}}</span>
+    </div>
+
 </div>
