@@ -6,6 +6,9 @@ https://tatsuya-takahashi.github.io/citation-viewer/
 This is a visualization of the citation relationships of the papers registered in Paperpile.
 It is a graph network where nodes are papers and edges are citation relations.
 
+> 使い方（日本語）はこちら
+> https://zenn.dev/iwashi_ser/articles/424cc29cbf3e32
+
 ## Release Note
 ### 2021.01.06 Ver 1.0
 - Published
