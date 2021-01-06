@@ -142,7 +142,7 @@ export class CitationViewerComponent implements OnInit {
 
     try {
       for (const row of jsontext) {
-        console.log(row);
+        // console.log(row);
         parallelFunctions.push(this.getItem(row));
       }
 
@@ -152,7 +152,7 @@ export class CitationViewerComponent implements OnInit {
       // graph nodes
       let idx: number = 0;
       for (const item of items) {
-        console.log(item);
+        // console.log(item);
         this.graphNodes.push({
           index: idx,
           DOI: item.DOI,
@@ -306,7 +306,7 @@ export class CitationViewerComponent implements OnInit {
         d3.select("#id_" + d.index).classed("fixed", true);
         this.papertitle = d.title;
         this.abstract = d.abstract;
-        console.log(d.abstract);
+        // console.log(d.abstract);
       })
       .on("drag", (event: any, d: any) => {
         d.fx = event.x;
