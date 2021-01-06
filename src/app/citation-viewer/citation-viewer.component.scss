@@ -9,14 +9,31 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 10;
+    z-index: 110;
 }
 
 .share {
     position: absolute;
-    top: 6px;
+    top: 4px;
     right: 60px;
-    z-index: 10;
+    z-index: 110;
+    .shareicon {
+        font-size: 22px;
+        font-weight: 100;
+        color: #4BA1EF;
+    }
+}
+
+.donation {
+    position: absolute;
+    top: 4px;
+    right: 100px;
+    z-index: 110;
+    .donationicon {
+        font-size: 24px;
+        font-weight: 100;
+        color: #7FDE92;
+    }
 }
 
 .title-wrapper {
