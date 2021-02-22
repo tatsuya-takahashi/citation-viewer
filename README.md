@@ -68,5 +68,5 @@ npm run start
 Your donation will encourage the development of the application.
 Amazon Gift Cards are accepted from ¥15.  
 
-My Wish List  
-https://www.amazon.co.jp/hz/wishlist/ls/LM7BTYTNIHI/ref=nav_wishlist_lists_1?_encoding=UTF8&type=wishlist
+### My Wish List  
+https://www.amazon.co.jp/hz/wishlist/genericItemsPage/LM7BTYTNIHI?type=wishlist&filter=persistent_all&sort=priority&viewType=list
